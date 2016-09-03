@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="docs/snapshot.png" alt="initrd-snapshot" /></a>
+  <a href="#"><img src="snapshot.png" alt="initrd-snapshot" /></a>
   <br><br>
 </h1>
 
