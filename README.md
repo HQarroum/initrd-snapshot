@@ -41,10 +41,9 @@ auto image = initrd::builder_t()
 
 ### Writing the image to disk
 
-Once the image has been constructed in memory, you can write the image raw data as follow :
+Once the image has been constructed in memory, you can write the image raw data to disk by calling the `.data()` accessor on the `initrd::image_t` class :
 
 ```c++
-// This example assumes a POSIX environment.
 std::ofstream file("initrd.img", std::ofstream::out);
 
 file.write(image.data(), image.size());
