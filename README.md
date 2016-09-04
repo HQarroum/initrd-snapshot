@@ -49,3 +49,25 @@ std::ofstream file("initrd.img", std::ofstream::out);
 file.write(image.data(), image.size());
 file.close();
 ```
+
+### Reading an image from disk
+
+The operation here involves loading an image from the disk, and passing it to `initrd::reader_t` :
+
+```c++
+std::ifstream      file("initrd.img, std::ios::binary | std::ios::ate);
+std::ostringstream ostream;
+
+std::copy(std::istreambuf_iterator<char>(fin),
+     std::istreambuf_iterator<char>(),
+     std::ostreambuf_iterator<char>(ostream));
+ostream.seekp(0, ios::end);
+std::streampos size = oss.tellp();
+
+try {
+  initrd::reader_t reader(ostream.str().data(), size);
+  std::cout << reader.image() << std::endl;
+} catch (std::exception& e) {
+  std::cout << e.what() << std::endl;
+}
+```
