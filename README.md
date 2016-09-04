@@ -22,10 +22,19 @@ Initial ramdisks (initrd) provide the capability to load a RAM disk by the boot 
 
 This project contains different components, namely :
 
- * A C++11 library initially developped to provide the [Microcosm Kernel](https://github.com/HQarroum/microcosm) with the ability to load its root filesystem, though it is not tight or dependant on any of microcosm's software components.
+ * A C++11 library initially developped to provide the [Microcosm Kernel](https://github.com/HQarroum/microcosm) with the ability to load its root filesystem, though it is not dependant on any of microcosm's software components.
  * A set of POSIX tools built on top the library to create and browse initrd images.
 
 ## Library usage
 
-### 
+### Creating an image
+
+In order to create an `initrd` image you can use the image builder that is bundled with the library before writing it to a file :
+
+```c++
+auto image = initrd::builder_t()
+  .addFile("./file_1")
+  .addFile("./file_2")
+  .build()
+```
 
