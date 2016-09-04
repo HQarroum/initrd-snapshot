@@ -55,16 +55,9 @@ file.close();
 The operation here involves loading an image from the disk, and passing it to `initrd::reader_t` :
 
 ```c++
-std::ifstream      file("initrd.img", std::ios::binary);
-std::ostringstream ostream;
-
-std::copy(std::istreambuf_iterator<char>(fin),
-     std::istreambuf_iterator<char>(),
-     std::ostreambuf_iterator<char>(ostream));
-ostream.seekp(0, ios::end);
-
 try {
-  initrd::reader_t reader(ostream.str().data(), ostream.tellp());
+  auto file = read_file("./initrd.img");
+  initrd::reader_t reader(file.data(), file.size());
   std::cout << reader.image() << std::endl;
 } catch (std::exception& e) {
   std::cout << e.what() << std::endl;
