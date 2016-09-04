@@ -27,14 +27,26 @@ This project contains different components, namely :
 
 ## Library usage
 
-### Creating an image
+### Creating an image in memory
 
 In order to create an `initrd` image you can use the image builder that is bundled with the library before writing it to a file :
 
 ```c++
 auto image = initrd::builder_t()
-  .addFile("./file_1")
-  .addFile("./file_2")
+  .addFile({ file: file_1, size: size_of_file_1 })
+  .addFile({ file: file_2, size: size_of_file_2 })
+  .addFiles(list_of_files)
   .build()
 ```
 
+### Writing the image to disk
+
+Once the image has been constructed in memory, you can write the image raw data as follow :
+
+```c++
+// This example assumes a POSIX environment.
+std::ofstream file("initrd.img", std::ofstream::out);
+
+file.write(image.data(), image.size());
+file.close();
+```
