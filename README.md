@@ -55,7 +55,7 @@ file.close();
 The operation here involves loading an image from the disk, and passing it to `initrd::reader_t` :
 
 ```c++
-std::ifstream      file("initrd.img, std::ios::binary | std::ios::ate);
+std::ifstream      file("initrd.img", std::ios::binary | std::ios::ate);
 std::ostringstream ostream;
 
 std::copy(std::istreambuf_iterator<char>(fin),
