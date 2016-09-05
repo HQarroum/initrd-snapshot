@@ -45,9 +45,7 @@ Once the image has been constructed in memory, you can write the image raw data 
 
 ```c++
 std::ofstream file("initrd.img", std::ofstream::out);
-
 file.write(image.data(), image.size());
-file.close();
 ```
 
 ### Reading an image from disk
